@@ -89,7 +89,7 @@ class Charitable_Export_Donations extends Charitable_Export {
 
             case 'status' : 
                 if ( isset( $data[ 'post_status' ] ) ) {
-                    $value = $this->statuses[ $data[ 'post_status' ] ];
+                    $value = isset( $this->statuses[ $data[ 'post_status' ] ] ) ? $this->statuses[ $data[ 'post_status' ] ] : $data[ 'post_status' ];
                 }
                 break;
 
