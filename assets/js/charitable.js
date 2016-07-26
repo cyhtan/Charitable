@@ -152,9 +152,21 @@ CHARITABLE = window.CHARITABLE || {};
                     }
                 }
             }).fail(function (response, textStatus, errorThrown) {
+                var error_message = 'An error occurred during payment submission. ' +
+                                    'Please reload the page and try again. If the problem persists, contact support.';
+                var error_html = '<div class="charitable-form-errors charitable-notice">' +
+                                   '<span>' + error_message + '</span>' +
+                                 '</div>';
+
                 if ( window.console && window.console.log ) {
                     console.log( response );
                 }
+
+                if ( $form.find( '.charitable-form-errors').length ) {
+                    $form.find( '.charitable-form-errors' ).remove();
+                }
+
+                $form.prepend( $(error_html) );
 
                 $donate_btn.show();
                 $spinner.hide();
