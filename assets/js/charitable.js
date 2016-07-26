@@ -171,7 +171,12 @@ CHARITABLE = window.CHARITABLE || {};
                 $donate_btn.show();
                 $spinner.hide();
 
-                window.scrollTo( coordinates.left, coordinates.top );
+                if ( $modal.length ) {
+                    $modal.scrollTop( 0 );
+                }
+                else {
+                    window.scrollTo( coordinates.left, coordinates.top );
+                }
 
             }).always(function (response) {
                 submit_processing = false;
